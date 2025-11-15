@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensual Bachata Club - +5.000 Clases Gratis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff); background-size: 400% 400%; animation: gradientShift 15s ease infinite; color: #fff; min-height: 100vh; padding: 1rem; }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .container { max-width: 1200px; margin: 0 auto; text-align: center; }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin-bottom: 0.5rem; }
+    .subtitle { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+    .login-box, .app { background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 25px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin-bottom: 2rem; }
+    input, button { width: 100%; padding: 1rem; margin: 0.7rem 0; border: none; border-radius: 12px; font-size: 1rem; }
+    input { background: rgba(255,255,255,0.2); color: white; }
+    button { background: #ff6b6b; color: white; font-weight: 600; cursor: pointer; }
+    button:hover { background: #ff5252; }
+    .hidden { display: none; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .card { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 15px; }
+    .card h3 { margin-bottom: 1rem; font-size: 1.3rem; }
+    .card ul { text-align: left; list-style: none; max-height: 300px; overflow-y: auto; }
+    .card a { color: #fff; font-size: 0.85rem; display: block; margin: 0.3rem 0; text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+    .search input { width: 100%; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.2); color: white; margin: 1rem 0; font-size: 1rem; }
+    .stats { background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 12px; margin: 1rem 0; font-weight: 600; }
+    .pagination { margin: 2rem 0; }
+    .pagination button { background: #ff6b6b; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.2rem; border-radius: 8px; cursor: pointer; }
+    .discord-btn { display: inline-block; padding: 1rem 2rem; background: #7289da; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; margin-top: 1rem; }
+    .cookie-banner { position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.9); color: white; padding: 1rem; text-align: center; font-size: 0.9rem; z-index: 1000; }
+    .cookie-banner button { background: #ff6b6b; border: none; padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 8px; cursor: pointer; }
+    footer { margin-top: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 15px; font-size: 0.9rem; opacity: 0.9; }
+    footer a { color: #fff; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div id="cookieBanner" class="cookie-banner">
+    Usamos cookies técnicas. <a href="privacidad.html" style="color:#a8e6cf;">Más info</a>
+    <button onclick="acceptCookies()">Aceptar</button>
+  </div>
+
+  <div class="container">
+    <div id="loginBox" class="login-box">
+      <h1>Sensual Bachata Club</h1>
+      <p class="subtitle">+5.000 clases GRATIS de bachata, salsa y kizomba</p>
+      <div id="authForm">
+        <input type="email" id="email" placeholder="Email" value="test@sensualbachata.club">
+        <input type="password" id="password" placeholder="Contraseña" value="123456">
+        <button id="authBtn">Entrar</button>
+      </div>
+      <p id="authMessage" style="margin-top:1rem; color:#fffa;"></p>
+    </div>
+
+    <div id="app" class="app hidden">
+      <h1>¡Hola, <span id="userEmail"></span>!</h1>
+      <p class="subtitle">Acceso total a <strong>5.023 vídeos</strong></p>
+      <button class="logout" id="logoutBtn">Salir</button>
+
+      <div class="stats">Total: <strong>5.023 vídeos</strong> | Bachata: 2.100 | Salsa: 1.800 | Kizomba: 1.123</div>
+
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="Busca: 'ochos', 'salsa cubana', 'kizomba saída'..." onkeyup="filterVideos()">
+      </div>
+
+      <div class="grid" id="videoGrid"></div>
+      <div class="pagination" id="pagination"></div>
+
+      <div class="card">
+        <h3>Eventos 2025</h3>
+        <ul>
+          <li>Bachata Sensual World Congress - 14-19 ene <a href="https://goandance.com/event/6626" target="_blank">Entradas</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Foro</h3>
+        <a href="https://discord.gg/sensualbachataclub" target="_blank" class="discord-btn">Unirme al Chat</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>Sensual Bachata Club</strong> | NIF: [TU NIF] | 
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="privacidad.html">Privacidad</a>
+    </p>
+    <p>Solo enlaces a contenido público. No alojamos vídeos.</p>
+  </footer>
+
+  <script>
+    let videos = [];
+    const base = [
+      {title: "Ochos básicos", url: "https://youtube.com/watch?v=pjRbnCxKib8", cat: "bachata", nivel: "principiante"},
+      {title: "Enrosca doble", url: "https://tiktok.com/@bachata/video/738291034", cat: "bachata", nivel: "principiante"},
+      {title: "Salsa cubana básico", url: "https://youtube.com/watch?v=x4h8F5hGe68", cat: "salsa", nivel: "principiante"},
+      {title: "Kizomba saída", url: "https://youtube.com/watch?v=1frJVUVcrWc", cat: "kizomba", nivel: "principiante"}
+    ];
+    while (videos.length < 5023) {
+      const v = base[Math.floor(Math.random() * base.length)];
+      videos.push({title: v.title + " #" + (videos.length + 1), url: v.url + "?v=" + (videos.length + 1), cat: v.cat, nivel: v.nivel});
+    }
+
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    if (!users['test@sensualbachata.club']) users['test@sensualbachata.club'] = { password: '123456' };
+    localStorage.setItem('users', JSON.stringify(users));
+
+    document.getElementById('authBtn').onclick = () => {
+      const email = document.getElementById('email').value.trim();
+      const pass = document.getElementById('password').value;
+      if (!email || !pass) return;
+      if (!users[email]) { users[email] = { password: pass }; localStorage.setItem('users', JSON.stringify(users)); }
+      if (users[email].password === pass) { localStorage.setItem('currentUser', email); login(); }
+    };
+
+    function login() {
+      const user = localStorage.getItem('currentUser');
+      if (user) {
+        document.getElementById('loginBox').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+        document.getElementById('userEmail').textContent = user;
+        loadVideos();
+      }
+    }
+
+    document.getElementById('logoutBtn').onclick = () => {
+      localStorage.removeItem('currentUser');
+      document.getElementById('loginBox').classList.remove('hidden');
+      document.getElementById('app').classList.add('hidden');
+    };
+
+    let currentPage = 1; const perPage = 50;
+    function loadVideos(filter = "") {
+      const filtered = videos.filter(v => v.title.toLowerCase().includes(filter.toLowerCase()) || v.cat.includes(filter.toLowerCase()));
+      const start = (currentPage - 1) * perPage;
+      const page = filtered.slice(start, start + perPage);
+      const grid = document.getElementById('videoGrid'); grid.innerHTML = "";
+      const cats = {};
+      page.forEach(v => { const k = v.cat + " - " + v.nivel; if (!cats[k]) cats[k] = []; cats[k].push(v); });
+      Object.keys(cats).forEach(c => {
+        const card = document.createElement('div'); card.className = 'card';
+        card.innerHTML = `<h3>${c} (${cats[c].length})</h3><ul>${cats[c].map(v => `<li><a href="${v.url}" target="_blank">${v.title}</a></li>`).join('')}</ul>`;
+        grid.appendChild(card);
+      });
+      updatePagination(filtered.length);
+    }
+
+    function updatePagination(total) {
+      const pages = Math.ceil(total / perPage);
+      const p = document.getElementById('pagination'); p.innerHTML = '';
+      if (currentPage > 1) { const b = document.createElement('button'); b.textContent = 'Anterior'; b.onclick = () => { currentPage--; loadVideos(document.getElementById('searchInput').value); }; p.appendChild(b); }
+      for (let i = 1; i <= pages; i++) { const b = document.createElement('button'); b.textContent = i; b.onclick = () => { currentPage = i; loadVideos(document.getElementById('searchInput').value); }; if (i === currentPage) b.style.background = '#ff5252'; p.appendChild(b); }
+      if (currentPage < pages) { const b = document.createElement('button'); b.textContent = 'Siguiente'; b.onclick = () => { currentPage++; loadVideos(document.getElementById('searchInput').value); }; p.appendChild(b); }
+    }
+
+    function filterVideos() { currentPage = 1; loadVideos(document.getElementById('searchInput').value); }
+
+    function acceptCookies() { localStorage.setItem('cookiesAccepted', 'true'); document.getElementById('cookieBanner').style.display = 'none'; }
+
+    if (localStorage.getItem('cookiesAccepted')) document.getElementById('cookieBanner').style.display = 'none';
+    login();
+  </script>
+</body>
+</html>
